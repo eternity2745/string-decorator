@@ -5,7 +5,7 @@ Python Module to have fun with strings
 ## Documentation
 
 | Name | Description |
-|:--|:--|:--|
+|:--|:--|
 | `randcase` | Changes the given text to random cases (upper or lower) |
 | `snakecase` | Changes the given text to `snake_case` |
 | `constantcase` |  Changes the given text to `CONSTANT_CASE` |
