@@ -3,7 +3,7 @@
 Python Module to have fun with strings
 
 ## Usage
-###Example 1
+### Example 1
 ```py
 from string_decorator import randcase
 print(randcase("hello"))
