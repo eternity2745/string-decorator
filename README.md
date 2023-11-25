@@ -3,19 +3,15 @@
 Python Module to have fun with strings
 
 ## Usage
+###Example 1
 ```py
-from string_decorator import string_decorator 
-print(string_decorator.randcase("hello"))
+from string_decorator import randcase
+print(randcase("hello"))
 ```
 #### Output
 
 ```
 hElLo
-```
-You can also import it as 
-```py
-from string_decorator.string_decorator import randcase
-print(randcase("hello"))
 ```
 
 ## Documentation
