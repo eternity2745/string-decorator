@@ -2,6 +2,7 @@ import random
 from colorama import Fore, Style
 import base64
 from .NumericParser import Math
+import re
 
 class ValueException(Exception):
     """raised when given value is not the required datatype"""
