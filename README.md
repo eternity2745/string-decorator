@@ -3,15 +3,41 @@
 Python Module to have fun with strings
 
 ## Usage
-### Example 1
+### Example 1 -> Calculating expression from given string
+```py
+from string_decorator import calculate
+print(calculate("(123+23) * 23 / 32"))
+```
+#### Output
+```
+104.9375
+```
+### Example 2 -> Validating text based on given conditions
+```py
+from string_decorator import validate_text
+print(validate_text("imEternity1234@strings", length = 13, uppercase = 1, lowercase = 5, numbers = 4, special_characters=1))
+```
+#### Output
+```
+True
+```
+### Example 3 -> Converting the string to random cases
 ```py
 from string_decorator import randcase
 print(randcase("hello"))
 ```
 #### Output
-
 ```
-hElLo
+hELlO
+```
+### Example 4 -> Extracting numbers from the given string
+```py
+from string_decorator import num_extract
+print(num_extract("hello123 23,211 42.23 -134 g00d"))
+```
+#### Output
+```
+['123', '23,211', '42.23', '-134', '00']
 ```
 
 ## Documentation
