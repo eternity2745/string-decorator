@@ -1,6 +1,7 @@
 # string-decorator
 
-Python Module to have fun with strings
+Python Module to have fun with strings<br>
+[![PyPI version](https://badge.fury.io/py/string-decorator.svg)](https://badge.fury.io/py/string-decorator) [![Downloads](https://static.pepy.tech/badge/string-decorator)](https://pepy.tech/project/string-decorator) [![Downloads](https://static.pepy.tech/badge/string-decorator/month)](https://pepy.tech/project/string-decorator) 
 
 ## Usage
 ### Example 1 -> Calculating expression from given string
