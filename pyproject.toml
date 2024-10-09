@@ -10,7 +10,7 @@ license = {file = "LICENSE"}
 keywords = ["string", "decorator", "case", "changer"]
 readme = "README.md"
 description = "Python package for playing with strings"
-dependencies = ["colorama"]
+dependencies = ["colorama", "pyparsing"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
