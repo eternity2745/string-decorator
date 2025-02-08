@@ -14,7 +14,7 @@ class InvalidEncodedString(Exception):
     """raised when the provided bytes is invalid"""
 
 
-def randcase(func):
+def randcase(func) -> str:
     """Changes the given text to random cases (upper or lower)"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -26,7 +26,7 @@ def randcase(func):
             return ''.join(random.choice((str.upper, str.lower))(x) for x in text)
     return wrapper
 
-def snakecase(func):
+def snakecase(func) -> str:
     """Changes the given text to snake_case"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -38,7 +38,7 @@ def snakecase(func):
             return '_'.join(text.lower().split())
     return wrapper
 
-def constantcase(func):
+def constantcase(func) -> str:
     """Changes the given text to CONSTANT_CASE"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -50,7 +50,7 @@ def constantcase(func):
             return '_'.join(text.upper().split())
     return wrapper
 
-def kebabcase(func):
+def kebabcase(func) -> str:
     """Changes the given text to kebab-case"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -62,7 +62,7 @@ def kebabcase(func):
             return '-'.join(text.lower().split())
     return wrapper
 
-def headercase(func):
+def headercase(func) -> str:
     """Changes the given text to Header-Case"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -74,7 +74,7 @@ def headercase(func):
             return '-'.join(text.title().split())
     return wrapper
 
-def pascalcase(func):
+def pascalcase(func) -> str:
     """Changes the given text to PascalCase"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -86,7 +86,7 @@ def pascalcase(func):
             return ''.join(text.title().split())
     return wrapper
 
-def camelcase(func):
+def camelcase(func) -> str:
     """Changes the given text to camelCase"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -99,7 +99,7 @@ def camelcase(func):
             return text_list[0].lower()+''.join(i.title() for i in text_list[1:])
     return wrapper
 
-def dotcase(func):
+def dotcase(func) -> str:
     """Changes the given text to dot.case"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -111,7 +111,7 @@ def dotcase(func):
             return '.'.join(text.lower().split())
     return wrapper
 
-def pathcase(func):
+def pathcase(func) -> str:
     """Changes the given text to path/case"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -123,7 +123,7 @@ def pathcase(func):
             return '/'.join(text.lower().split())
     return wrapper
 
-def swapcase(func):
+def swapcase(func) -> str:
     """Changes each upper characters to lower and vice versa"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -141,7 +141,7 @@ def swapcase(func):
             return new_text
     return wrapper
 
-def scramble_sentence(func):
+def scramble_sentence(func) -> str:
     """Returns the sentence in random order\n
     Eg: 'Hello my friend' might change to 'my friend Hello'"""
     def wrapper(text: str, *args, **kwargs):
@@ -156,7 +156,7 @@ def scramble_sentence(func):
             return ' '.join(text_list)
     return wrapper
 
-def sentence_reverse(func):
+def sentence_reverse(func) -> str:
     """
     Reverses given sentence\n
     Eg: 'Hello world' changes to 'world Hello'
@@ -173,7 +173,7 @@ def sentence_reverse(func):
         
     return wrapper
 
-def random_string(func):
+def random_string(func) -> str:
     """Generates a random string comprising of lower cased or upper cased characters, numbers, symbols"""
     def wrapper(length: int, *args, **kwargs):
         if type(length) != int:
@@ -184,7 +184,7 @@ def random_string(func):
             return ''.join(random.choice(string) for i in range(length))
     return wrapper
 
-def str_encode(func):
+def str_encode(func) -> bytes:
     """Encodes the given text into bytes format"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -196,7 +196,7 @@ def str_encode(func):
             return base64.b64encode(text.encode("utf-8"))
     return wrapper
 
-def bytes_decode(func):
+def bytes_decode(func) -> str:
     """Decodes bytes back to string"""
     def wrapper(text: bytes, *args, **kwargs):
         if type(text) != bytes:
@@ -210,7 +210,7 @@ def bytes_decode(func):
             return base64.b64decode(text).decode("utf-8")
     return wrapper
 
-def num_extract(func):
+def num_extract(func) -> list[int] | list[str]:
     """Extracts numbers from the given string and returns it as a list of numbers
     :parameters:
         :attr:`string:`
@@ -247,7 +247,7 @@ def num_extract(func):
     return wrapper
 
 
-def validate_email(func):
+def validate_email(func) -> bool:
     """Validates the text to check if the email format is correct"""
     def wrapper(text: str, *args, **kwargs):
         if type(text) != str:
@@ -263,7 +263,7 @@ def validate_email(func):
                 return False
     return wrapper
 
-def validate_text(func):
+def validate_text(func) -> bool:
     """Validates the text to check if it is right according to the conditions specified.
     :parameters:
         :attr:`length:`
@@ -357,7 +357,7 @@ def validate_text(func):
             return True
     return wrapper
 
-def calculate(func):
+def calculate(func) -> float | int:
     """
     Evaluates the given string\n
     eg: '2+3' gives 5
