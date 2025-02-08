@@ -247,15 +247,124 @@ def num_extract(func):
     return wrapper
 
 
-def validate_email(text: str):
+def validate_email(func):
     """Validates the text to check if the email format is correct"""
-    if type(text) != str:
-        raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
-    elif len(text) == 0:
-        raise NoInput("Text can't be empty")
-    else:
-        expression = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-        if re.match(expression, text):
-            return True
+    def wrapper(text: str, *args, **kwargs):
+        if type(text) != str:
+            raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
+        elif len(text) == 0:
+            raise NoInput("Text can't be empty")
         else:
+            func(*args, **kwargs)
+            expression = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+            if re.match(expression, text):
+                return True
+            else:
+                return False
+    return wrapper
+
+def validate_text(func):
+    """Validates the text to check if it is right according to the conditions specified.
+    :parameters:
+        :attr:`length:`
+            The minimum length of the text.
+        :attr:`uppercase:`
+            The minimum number of uppercase letters in the text. Set to 'all' if all letters have to be in uppercase.
+        :attr:`lowercase:`
+            The minimum number of lowercase letters in the text. Set to 'all' if all letters have to be in lowercase.
+        :attr:`numbers:`
+            The minimum number of numbers (positive integers) in the text. Set to 'all' if all are numbers.
+        :attr:`special_characters:`
+            The minimum number of special characters in the text. Set to 'all' if all are special characters.
+    """
+    def wrapper(text: str, length=6, uppercase=1, lowercase=1, numbers=1, special_characters=1, *args, **kwargs):
+        if type(text) != str:
+            raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
+        elif type(length) != int:
+                raise ValueException(f"Length can only be an{Fore.GREEN}'integer'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL} ")
+        elif len(text) == 0:
+            raise NoInput("Text can't be empty")
+        func(*args, **kwargs)
+        flag = True
+        if len(text) < length:
+            flag = False
+        if uppercase:
+            if type(uppercase) not in (str, int):
+                raise ValueException(f"Uppercase parameter can only be {Fore.GREEN}'all'{Style.RESET_ALL}or an{Fore.GREEN}'integer'{Style.RESET_ALL}")
+            count = 0
+            if uppercase == 'all':
+                if not(text.isupper()):
+                    flag = False
+            else:
+                for i in text:
+                    if i.isupper():
+                        count += 1
+
+                if count < uppercase:
+                    flag = False
+        if lowercase:
+            if type(lowercase) not in (str, int):
+                raise ValueException(f"Lowercase parameter can only be {Fore.GREEN}'all'{Style.RESET_ALL}or an{Fore.GREEN}'integer'{Style.RESET_ALL}")
+            count = 0
+            if lowercase == 'all':
+                if not(text.islower()):
+                    flag = False
+            else:
+                for i in text:
+                    if i.islower():
+                        count += 1
+
+                if count < lowercase:
+                    flag = False
+
+        if numbers:
+            if type(numbers) not in (str, int):
+                raise ValueException(f"Numbers parameter can only be {Fore.GREEN}'all'{Style.RESET_ALL}or an{Fore.GREEN}'integer'{Style.RESET_ALL}")
+            count = 0
+            if numbers == 'all':
+                if not(text.isdigit()):
+                    flag = False
+            else:
+                for i in text:
+                    if i.isdigit():
+                        count += 1
+
+                if count < numbers:
+                    flag = False
+
+        if special_characters:
+            if type(special_characters) not in (str, int):
+                raise ValueException(f"Special Characters parameter can only be {Fore.GREEN}'all'{Style.RESET_ALL}or an{Fore.GREEN}'integer'{Style.RESET_ALL}")
+            count = 0
+            characters = "!@#$%^&*()-+?_=,<>/"
+            if special_characters == 'all':
+                for i in text:
+                    if i in characters:
+                        count += 1
+                if count < len(text):
+                    flag = False
+            else:
+                for i in text:
+                    if i in characters:
+                        count += 1
+
+                if count < special_characters:
+                    flag = False  
+
+        if flag == False:
             return False
+        else:
+            return True
+    return wrapper
+
+def calculate(func):
+    """
+    Evaluates the given string\n
+    eg: '2+3' gives 5
+    """
+    def wrapper(text: str, *args, **kwargs):
+        func(*args, **kwargs)
+        string_parser = Math()
+        return string_parser.eval(text)
+    return wrapper
+    
