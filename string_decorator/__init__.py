@@ -13,7 +13,7 @@ class NoInput(Exception):
 class InvalidEncodedString(Exception):
     """raised when the provided bytes is invalid"""
 
-def randcase(text: str):
+def randcase(text: str) -> str:
     """Changes the given text to random cases (upper or lower)"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -22,7 +22,7 @@ def randcase(text: str):
     else:
         return ''.join(random.choice((str.upper, str.lower))(x) for x in text)
 
-def snakecase(text: str):
+def snakecase(text: str) -> str:
     """Changes the given text to snake_case"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -31,7 +31,7 @@ def snakecase(text: str):
     else:
         return '_'.join(text.lower().split())
     
-def constantcase(text: str):
+def constantcase(text: str) -> str:
     """Changes the given text to CONSTANT_CASE"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -40,7 +40,7 @@ def constantcase(text: str):
     else:
         return '_'.join(text.upper().split())
     
-def kebabcase(text: str):
+def kebabcase(text: str) -> str:
     """Changes the given text to kebab-case"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -49,7 +49,7 @@ def kebabcase(text: str):
     else:
         return '-'.join(text.lower().split())
 
-def headercase(text: str):
+def headercase(text: str) -> str:
     """Changes the given text to Header-Case"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -58,7 +58,7 @@ def headercase(text: str):
     else:
         return '-'.join(text.title().split())
     
-def pascalcase(text: str):
+def pascalcase(text: str) -> str:
     """Changes the given text to PascalCase"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -67,7 +67,7 @@ def pascalcase(text: str):
     else:
         return ''.join(text.title().split())
     
-def camelcase(text: str):
+def camelcase(text: str) -> str:
     """Changes the given text to camelCase"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -77,7 +77,7 @@ def camelcase(text: str):
         text_list = text.split()
         return text_list[0].lower()+''.join(i.title() for i in text_list[1:])
     
-def dotcase(text: str):
+def dotcase(text: str) -> str:
     """Changes the given text to dot.case"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -86,7 +86,7 @@ def dotcase(text: str):
     else:
         return '.'.join(text.lower().split())
     
-def pathcase(text: str):
+def pathcase(text: str) -> str:
     """Changes the given text to path/case"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -95,7 +95,7 @@ def pathcase(text: str):
     else:
         return '/'.join(text.lower().split())
     
-def swapcase(text: str):
+def swapcase(text: str) -> str:
     """Changes each upper characters to lower and vice versa"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -110,7 +110,7 @@ def swapcase(text: str):
                 new_text += i.upper()
         return new_text
     
-def scramble_sentence(text: str):
+def scramble_sentence(text: str) -> str:
     """Returns the sentence in random order\n
     Eg: 'Hello my friend' might change to 'my friend Hello'"""
     if type(text) != str:
@@ -122,7 +122,7 @@ def scramble_sentence(text: str):
         random.shuffle(text_list)
         return ' '.join(text_list)
     
-def sentence_reverse(text: str):
+def sentence_reverse(text: str) -> str:
     """
     Reverses given sentence\n
     Eg: 'Hello world' changes to 'world Hello'
@@ -135,7 +135,7 @@ def sentence_reverse(text: str):
         text_list = text.split()
         return ' '.join(i for i in text_list[-1::-1])
     
-def random_string(length: int):
+def random_string(length: int) -> str:
     """Generates a random string comprising of lower cased or upper cased characters, numbers, symbols"""
     if type(length) != int:
         raise ValueException(f"Length can only be {Fore.GREEN}'int'{Style.RESET_ALL} not {Fore.GREEN}'{type(length).__name__}'{Style.RESET_ALL}")
@@ -143,7 +143,7 @@ def random_string(length: int):
         string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
         return ''.join(random.choice(string) for i in range(length))
     
-def str_encode(text: str):
+def str_encode(text: str) -> bytes:
     """Encodes the given text into bytes format"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -152,7 +152,7 @@ def str_encode(text: str):
     else:
         return base64.b64encode(text.encode("utf-8"))
     
-def bytes_decode(text: bytes):
+def bytes_decode(text: bytes) -> str:
     """Decodes bytes back to string"""
     if type(text) != bytes:
         raise ValueException(f"Text can only be {Fore.GREEN}'bytes'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -163,7 +163,7 @@ def bytes_decode(text: bytes):
     else:
         return base64.b64decode(text).decode("utf-8")
 
-def num_extract(text: str, string: bool = True):
+def num_extract(text: str, string: bool = True)  -> list[int] | list[str]:
     """Extracts numbers from the given string and returns it as a list of numbers
     :parameters:
         :attr:`string:`
@@ -196,7 +196,7 @@ def num_extract(text: str, string: bool = True):
                     l.append(float(i) if check_int==False else int(i))
             return l
         
-def validate_email(text: str):
+def validate_email(text: str) -> bool:
     """Validates the text to check if the email format is correct"""
     if type(text) != str:
         raise ValueException(f"Text can only be a {Fore.GREEN}'string'{Style.RESET_ALL} not {Fore.GREEN}'{type(text).__name__}'{Style.RESET_ALL}")
@@ -209,7 +209,7 @@ def validate_email(text: str):
         else:
             return False
         
-def validate_text(text: str, length=6, uppercase=1, lowercase=1, numbers=1, special_characters=1):
+def validate_text(text: str, length=6, uppercase=1, lowercase=1, numbers=1, special_characters=1) -> bool:
     """Validates the text to check if it is right according to the conditions specified.
     :parameters:
         :attr:`length:`
@@ -302,7 +302,7 @@ def validate_text(text: str, length=6, uppercase=1, lowercase=1, numbers=1, spec
     else:
         return True
 
-def calculate(text: str):
+def calculate(text: str) -> float | int:
     """
     Evaluates the given string\n
     eg: '2+3' gives 5
