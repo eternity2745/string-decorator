@@ -13,7 +13,6 @@ class NoInput(Exception):
 class InvalidEncodedString(Exception):
     """raised when the provided bytes is invalid"""
 
-
 def randcase(text: str):
     """Changes the given text to random cases (upper or lower)"""
     if type(text) != str:
@@ -180,7 +179,7 @@ def num_extract(text: str, string: bool = True):
     elif len(text) == 0:
         raise NoInput("Text can't be empty")
     else:
-        expression = '[-\d]+[.,\d]+|[-\d]*[.][\d]+|[-\d]+'
+        expression = r'[-\d]+[.,\d]+|[-\d]*[.][\d]+|[-\d]+'
         numbers = re.findall(expression, text)
 
         if string == True:
@@ -204,7 +203,7 @@ def validate_email(text: str):
     elif len(text) == 0:
         raise NoInput("Text can't be empty")
     else:
-        expression = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+        expression = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
         if re.match(expression, text):
             return True
         else:
