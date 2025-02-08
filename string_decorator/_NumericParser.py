@@ -4,7 +4,7 @@ import operator
 import math
 from operator import eq
 
-class Math(object):
+class __Math__(object):
 
     def pushFirst(self, strg, loc, toks):
         self.exprStack.append(toks[0])

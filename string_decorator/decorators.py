@@ -1,8 +1,9 @@
 import random
 from colorama import Fore, Style
 import base64
-from .NumericParser import Math
+from ._NumericParser import __Math__
 import re
+import sys
 
 class ValueException(Exception):
     """raised when given value is not the required datatype"""
@@ -364,7 +365,7 @@ def calculate(func) -> float | int:
     """
     def wrapper(text: str, *args, **kwargs):
         func(*args, **kwargs)
-        string_parser = Math()
+        string_parser = __Math__()
         return string_parser.eval(text)
     return wrapper
     

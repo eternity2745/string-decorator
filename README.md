@@ -48,7 +48,7 @@ print(constantcase("hello there"))
 #### Output
 ```
 HELLO_THERE
-```
+``` 
 
 ## Documentation
 `text` is a common parameter for all the functions
