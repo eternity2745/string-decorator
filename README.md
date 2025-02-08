@@ -1,6 +1,6 @@
 # string-decorator
 
-Python Module to have fun with strings<br>
+Python Module to have fun with strings. The module also makes use of python decorators<br>
 [![PyPI version](https://badge.fury.io/py/string-decorator.svg)](https://badge.fury.io/py/string-decorator) [![Downloads](https://static.pepy.tech/badge/string-decorator)](https://pepy.tech/project/string-decorator) [![Downloads](https://static.pepy.tech/badge/string-decorator/month)](https://pepy.tech/project/string-decorator) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Usage
@@ -48,7 +48,34 @@ print(constantcase("hello there"))
 #### Output
 ```
 HELLO_THERE
-``` 
+```
+
+## Using String Decorators
+## Example 1 -> Calculating Expression From String
+```py
+from string_decorator.decorators import calculate
+@calculate
+def calc():
+  print("The answer is:", end = " ")
+
+print(calc("843 + sin(32)"))
+```
+#### Output
+```
+The answer is: 843.5514266812417
+```
+### Example 2 -> Validating text based on given conditions
+```py
+@validate_text
+def validate():
+    return
+
+print(validate("imEternity1234@strings", length = 13, uppercase = 1, lowercase = 5, numbers = 4, special_characters=1))
+```
+#### Output
+```
+True
+```
 
 ## Documentation
 `text` is a common parameter for all the functions
